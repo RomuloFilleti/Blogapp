@@ -28,6 +28,13 @@
 
 // site para armazenar dados MongoDB, o https://mlab.com
 
+// Para publicação
+// instalar o git-scm pelo site https://git-scm.com
+// executar no prompt os seguintes comandos:
+// 1. git init
+// 2. git add .
+// 3. git commit -am "initial commit"
+
 // Carregando os módulos
 const express = require('express')
 const handlebars = require('express-handlebars')
