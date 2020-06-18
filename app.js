@@ -59,8 +59,8 @@ const db = require('./config/db')
     app.use(session({   // app.use --> criarção de middleware
         secret: "CursoNode",
         resave: true,
-        saveUninitialized: true,
-        useNewUrlParser: true
+        saveUninitialized: true//,
+        //useNewUrlParser: true
     })) 
 
     app.use(passport.initialize())
