@@ -62,9 +62,9 @@ require('./config/auth.js')(passport)
 
 
 const MongoClient = require('mongodb').MongoClient
-   const uri = "mongodb+srv://admin:R4m5l4@blogapp-prod-pyvks.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority"
+//const uri = "mongodb+srv://admin:R4m5l4@blogapp-prod-pyvks.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority"
 
-const client = new MongoClient(uri, { useNewUrlParser: true })
+const client = new MongoClient("mongodb+srv://admin:R4m5l4@blogapp-prod-pyvks.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority", { useNewUrlParser: true })
 client.connect(err => {
   const collection = client.db("test").collection("devices") 
   client.close()
