@@ -69,12 +69,12 @@ const MongoClient = require('mongodb').MongoClient
 //    const uri = "mongodb://localhost/blogapp"
 //}
 
-const client = new MongoClient(uri, { useNewUrlParser: true })//.then(() => { //db.mongoURI
-    //    console.log("Base de Dados Mongo Conectada")
-   // }).catch((err) => {
-  //      console.log("Erro ao acessar base de dados"+err)
-   // })
-//
+const client = new MongoClient(uri, { useNewUrlParser: true })
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
 
 //Configurações
     //Sessão
