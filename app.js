@@ -88,11 +88,13 @@ require('./config/auth.js')(passport)
         app.engine('handlebars', handlebars({ defaultLayout: 'main'}))
         app.set('view engine','handlebars')
     // Mongoose
-       mongoose.Promise = global.Promise //Sempre utilizar esta linha para acesso ao mongoose
+        mongoose.Promise = global.Promise //Sempre utilizar esta linha para acesso ao mongoose
         mongoose.connect(
-            "mongodb+srv://admin:R4m5l4@blogapp-prod-pyvks.gcp.mongodb.net/BlogApp?retryWrites=true&w=majority",
+            //"mongodb://LocalHost",
+            "mongodb+srv://admin:R4m5l4@blogapp-prod-pyvks.gcp.mongodb.net/BlogApp-Prod?retryWrites=true&w=majority",
             {
-                 useNewUrlParser: true 
+                useUnifiedTopology: true,
+                useNewUrlParser: true 
             }
         )       
         app.use(express.static(path.join(__dirname, 'public')))  // anuncia ao node que a pasta com arquivos estáticos é a public
