@@ -49,7 +49,9 @@ const app = express()
 const admin = require('./Routes/admin.js')
 const path = require('path') //já vem com o node
 const mongoose = require('mongoose')
+const db = require('./config/db')
 //
+
 const MongoClient = require('mongodb').MongoClient
 const client = new MongoClient(db.mongoURI, { useNewUrlParser: true }).then(() => { //db.mongoURI
         console.log("Base de Dados Mongo Conectada")
@@ -67,7 +69,7 @@ const Categoria = mongoose.model('categorias')
 const usuarios = require('./Routes/usuario.js')
 const passport = require('passport')
 require('./config/auth.js')(passport)
-const db = require('./config/db')
+
 //Configurações
     //Sessão
     app.use(session({   // app.use --> criarção de middleware
