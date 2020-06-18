@@ -39,7 +39,7 @@
 // 5. heroku git:remote -a evening-earth-00305         **evening-earth-00305 (é o nome da aplicação)
 // 6. git push heroku master
 // 7. heroku open        **Para testar a aplicação
-
+// 8. heroku logs --tail  **Depurar aplicação
 
 // Carregando os módulos
 const express = require('express')
@@ -59,17 +59,6 @@ const Categoria = mongoose.model('categorias')
 const usuarios = require('./Routes/usuario.js')
 const passport = require('passport')
 require('./config/auth.js')(passport)
-
-
-const MongoClient = require('mongodb').MongoClient
-//const uri = "mongodb+srv://admin:R4m5l4@blogapp-prod-pyvks.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority"
-
-mongoose.connect(
-    "mongodb+srv://admin:R4m5l4@blogapp-prod-pyvks.gcp.mongodb.net/BlogApp?retryWrites=true&w=majority",
-    {
-         useNewUrlParser: true 
-    }
-)
 
 //Configurações
     //Sessão
@@ -99,24 +88,13 @@ mongoose.connect(
         app.engine('handlebars', handlebars({ defaultLayout: 'main'}))
         app.set('view engine','handlebars')
     // Mongoose
-
-    
-    
-
-
-        mongoose.Promise = global.Promise //Sempre utilizar esta linhapara acesso ao mongoose
-        
-        client.connect(err => {
-            const collection = client.db("test").collection("devices");
-            // perform actions on the collection object
-            client.close();
-          });
-        //mongoose.connect(db.mongoURI, {useNewUrlParser: true}).then(() => { //db.mongoURI
-        //    console.log("Base de Dados Mongo Conectada")
-        //}).catch((err) => {
-        //    console.log("Erro ao acessar base de dados"+err)
-        //})
-    // Public
+       mongoose.Promise = global.Promise //Sempre utilizar esta linha para acesso ao mongoose
+        mongoose.connect(
+            "mongodb+srv://admin:R4m5l4@blogapp-prod-pyvks.gcp.mongodb.net/BlogApp?retryWrites=true&w=majority",
+            {
+                 useNewUrlParser: true 
+            }
+        )       
         app.use(express.static(path.join(__dirname, 'public')))  // anuncia ao node que a pasta com arquivos estáticos é a public
 //Rotas
     app.get('/', (req,res) => {
