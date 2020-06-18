@@ -49,6 +49,14 @@ const app = express()
 const admin = require('./Routes/admin.js')
 const path = require('path') //já vem com o node
 const mongoose = require('mongoose')
+//
+const MongoClient = require('mongodb').MongoClient
+const client = new MongoClient(db.mongoURI, { useNewUrlParser: true }).then(() => { //db.mongoURI
+        console.log("Base de Dados Mongo Conectada")
+    }).catch((err) => {
+        console.log("Erro ao acessar base de dados"+err)
+    })
+//
 const session = require('express-session')
 //const MongoStore = require('connect-mongo')(session)
 const flash = require('connect-flash')
@@ -88,12 +96,23 @@ const db = require('./config/db')
         app.engine('handlebars', handlebars({ defaultLayout: 'main'}))
         app.set('view engine','handlebars')
     // Mongoose
+
+    
+    
+
+
         mongoose.Promise = global.Promise //Sempre utilizar esta linhapara acesso ao mongoose
-        mongoose.connect(db.mongoURI, {useNewUrlParser: true}).then(() => { //db.mongoURI
-            console.log("Base de Dados Mongo Conectada")
-        }).catch((err) => {
-            console.log("Erro ao acessar base de dados"+err)
-        })
+        
+        client.connect(err => {
+            const collection = client.db("test").collection("devices");
+            // perform actions on the collection object
+            client.close();
+          });
+        //mongoose.connect(db.mongoURI, {useNewUrlParser: true}).then(() => { //db.mongoURI
+        //    console.log("Base de Dados Mongo Conectada")
+        //}).catch((err) => {
+        //    console.log("Erro ao acessar base de dados"+err)
+        //})
     // Public
         app.use(express.static(path.join(__dirname, 'public')))  // anuncia ao node que a pasta com arquivos estáticos é a public
 //Rotas
