@@ -44,6 +44,7 @@ const admin = require('./Routes/admin.js')
 const path = require('path') //já vem com o node
 const mongoose = require('mongoose')
 const session = require('express-session')
+const MongoStore = require('connect-mongo')(session);
 const flash = require('connect-flash')
 require('./models/Postagem.js')
 const Postagem = mongoose.model('postagens')
@@ -58,7 +59,8 @@ const db = require('./config/db')
     app.use(session({   // app.use --> criarção de middleware
         secret: "CursoNode",
         resave: true,
-        saveUninitialized: true
+        saveUninitialized: true,
+        useNewUrlParser: true
     })) 
 
     app.use(passport.initialize())
