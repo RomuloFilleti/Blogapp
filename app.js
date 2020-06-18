@@ -63,11 +63,11 @@ require('./config/auth.js')(passport)
 //
 
 const MongoClient = require('mongodb').MongoClient
-if(process.env.NODE_ENV == "production"){
+//if(process.env.NODE_ENV == "production"){
     const uri = "mongodb+srv://admin:R4m5l4@blogapp-prod-pyvks.gcp.mongodb.net/BlogApp-prod?retryWrites=true&w=majority"
-}else{
-    const uri = "mongodb://localhost/blogapp"
-}
+//}else{
+//    const uri = "mongodb://localhost/blogapp"
+//}
 
 const client = new MongoClient(uri, { useNewUrlParser: true })//.then(() => { //db.mongoURI
     //    console.log("Base de Dados Mongo Conectada")
