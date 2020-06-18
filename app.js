@@ -59,22 +59,16 @@ const Categoria = mongoose.model('categorias')
 const usuarios = require('./Routes/usuario.js')
 const passport = require('passport')
 require('./config/auth.js')(passport)
-//const db = require('./config/db')
-//
+
 
 const MongoClient = require('mongodb').MongoClient
-//if(process.env.NODE_ENV == "production"){
-    const uri = "mongodb+srv://admin:R4m5l4@blogapp-prod-pyvks.gcp.mongodb.net/BlogApp-prod?retryWrites=true&w=majority"
-//}else{
-//    const uri = "mongodb://localhost/blogapp"
-//}
+   const uri = "mongodb+srv://admin:R4m5l4@blogapp-prod-pyvks.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority"
 
 const client = new MongoClient(uri, { useNewUrlParser: true })
 client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
-});
+  const collection = client.db("test").collection("devices") 
+  client.close()
+})
 
 //Configurações
     //Sessão
