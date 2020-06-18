@@ -53,11 +53,11 @@ const db = require('./config/db')
 //
 
 const MongoClient = require('mongodb').MongoClient
-const client = new MongoClient(db.mongoURI, { useNewUrlParser: true }).then(() => { //db.mongoURI
-        console.log("Base de Dados Mongo Conectada")
-    }).catch((err) => {
-        console.log("Erro ao acessar base de dados"+err)
-    })
+const client = new MongoClient(db.mongoURI, { useNewUrlParser: true })//.then(() => { //db.mongoURI
+    //    console.log("Base de Dados Mongo Conectada")
+   // }).catch((err) => {
+  //      console.log("Erro ao acessar base de dados"+err)
+   // })
 //
 const session = require('express-session')
 //const MongoStore = require('connect-mongo')(session)
