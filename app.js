@@ -89,7 +89,7 @@ const db = require('./config/db')
         app.set('view engine','handlebars')
     // Mongoose
         mongoose.Promise = global.Promise //Sempre utilizar esta linhapara acesso ao mongoose
-        mongoose.connect(db.mongoURI).then(() => {
+        mongoose.connect(db.mongoURI, {useNewUrlParser: true}).then(() => { //db.mongoURI
             console.log("Base de Dados Mongo Conectada")
         }).catch((err) => {
             console.log("Erro ao acessar base de dados"+err)
