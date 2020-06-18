@@ -35,6 +35,12 @@
 // 2. git add .
 // 3. git commit -am "initial commit"
 
+// 4. heroku create             **Para criar uma nova aplicação
+// 5. heroku git:remote -a evening-earth-00305         **evening-earth-00305 (é o nome da aplicação)
+// 6. git push heroku master
+// 7. heroku open        **Para testar a aplicação
+
+
 // Carregando os módulos
 const express = require('express')
 const handlebars = require('express-handlebars')
@@ -44,7 +50,7 @@ const admin = require('./Routes/admin.js')
 const path = require('path') //já vem com o node
 const mongoose = require('mongoose')
 const session = require('express-session')
-const MongoStore = require('connect-mongo')(session);
+//const MongoStore = require('connect-mongo')(session)
 const flash = require('connect-flash')
 require('./models/Postagem.js')
 const Postagem = mongoose.model('postagens')
