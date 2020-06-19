@@ -157,7 +157,7 @@ require('./config/auth.js')(passport)
 
 
 // Outros
-
+socket = io.listen(process.env.PORT)
 const PORT = process.env.PORT || 8081 // o comando process.env.PORT é usado no HEROKU
 app.listen(PORT, () => {
     console.log("Servidor Rodando")
