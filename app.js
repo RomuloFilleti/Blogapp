@@ -91,7 +91,7 @@ require('./config/auth.js')(passport)
         mongoose.connect(
             //"mongodb://LocalHost",
             "mongodb+srv://admin:R4m5l4@blogapp-prod-pyvks.gcp.mongodb.net/BlogApp-Prod?retryWrites=true&w=majority",
-            {
+            { 
                 useUnifiedTopology: true,
                 useNewUrlParser: true 
             }
