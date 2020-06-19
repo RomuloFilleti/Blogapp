@@ -65,8 +65,7 @@ require('./config/auth.js')(passport)
     app.use(session({   // app.use --> criarção de middleware
         secret: "CursoNode",
         resave: true,
-        saveUninitialized: true,
-        useUnifiedTopology: true
+        saveUninitialized: true
     })) 
 
     app.use(passport.initialize())
